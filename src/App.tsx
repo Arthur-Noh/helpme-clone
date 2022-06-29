@@ -1,19 +1,16 @@
 import React from 'react';
-import './App.css';
-import styled from 'styled-components';
-import Flex from 'components/flex';
-
-const Text = styled.div`
-font-size: 25px;
-color: red;
-`
+import Main from 'page/main';
+import EstimateStep1 from 'page/estimate/step1';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
     return (
-        <>
-            <Flex>안녕ㅁㅇㄴㅁㅇㄴ하세ㅛ</Flex>
-        </>
-
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/estimateStep1' element={<EstimateStep1 />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
