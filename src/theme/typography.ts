@@ -1,9 +1,9 @@
 export interface ITypography {
     weight: {
-        regular: string,
-        medium: string,
-        semiBold: string,
-        bold: string,
+        regular: string;
+        semiBold: number;
+        bold: number;
+        extrabold: number;
     };
     size: {
         s1: number;
@@ -13,29 +13,27 @@ export interface ITypography {
         l1: number;
         l2: number;
         l3: number;
-        l4: number;
         el1: number;
         el2: number;
     };
-}
+};
 
 export const typography = {
     weight: {
-        regular: '400',
-        medium: '500',
-        semiBold: '600',
-        bold: '700',
+        regular: 'normal',
+        semiBold: 500,
+        bold: 700,
+        extrabold: 900,
     },
     size: {
-        s1: 13,
+        s1: 12,
         s2: 14,
-        m1: 15,
-        m2: 16,
-        l1: 17,
-        l2: 18,
-        l3: 19,
-        l4: 20,
-        el1: 21,
-        el2: 22,
+        m1: 16,
+        m2: 18,
+        l1: 20,
+        l2: 22,
+        l3: 26,
+        el1: 32,
+        el2: 34,
     },
 }

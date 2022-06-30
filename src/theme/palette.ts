@@ -1,53 +1,59 @@
 export interface IGray {
     100: string;
     200: string;
+    300: string;
+    400: string;
+    500: string;
     base: string;
-}
+};
 
 export interface IWhite {
     base: string;
-}
+};
 
 export interface IBlack {
-    100: string;
     base: string;
 }
 
-export interface IBlue {
-    100: string;
-    200: string;
+export interface IRed {
     base: string;
 }
 
 export interface IPrimary {
-    blue: string;
-    red: string;
-    yellow: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    base: string;
 }
 
 export const gray: IGray = {
-    100: '#F4F3F3',
-    200: '#EFEFEF',
-    base: '#545555',
-};
+    100: '#E9E9E9',
+    200: '#F3F3F3',
+    300: '#EFEFEF',
+    400: '#DBDBDB',
+    500: '#A6A6A6',
+    base: '#9C9C9C',
+}
 
 export const white: IWhite = {
-    base: '#FFFFFF',
+    base: '#ffffff',
 };
 
 export const black: IBlack = {
-    100: '#1C1C1C',
-    base: '#181818',
+    base: '#202020',
 };
 
-export const blue: IBlue = {
-    100: '#afc3ef',
-    200: '#5e86de',
-    base: '#3937c8',
+export const red: IRed = {
+    base: '#FF3E3E',
 };
 
 export const primary: IPrimary = {
-    blue: '#327ABE',
-    red: '#DC342D',
-    yellow: '#F19A38',
+    100: '#FFF6EE',
+    200: '#FFEEDF',
+    300: '#FCDFC6',
+    400: '#F16F00',
+    500: '#E66C04',
+    base: '#FF8B28',
 };
