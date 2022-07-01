@@ -3,11 +3,8 @@ import styled from '@emotion/styled';
 import ArrowImage from '../assert/arrow.png';
 
 const DropdownView = styled.div<{ width?: number }>`
-margin: 0 auto;
 position: relative;
-width: 200px;
-/* background-color: red; */
-/* border: 1px solid red; */
+width: ${({ width }) => width ? width : 200}px;
 `;
 
 const DropdownButtonView = styled.div`
@@ -29,20 +26,24 @@ height: 20px;
 transform: ${({ isRotate }) => isRotate ? 'rotate(180deg)' : 'rotate(0deg)'};
 `;
 
-const DropdownContent = styled.div`
+const DropdownContent = styled.div<{ dropdownHeight?: number }>`
 position: absolute;
 top: 100%;
 width: 100%;
 background-color: '#ffffff';
-box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+/* box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06); */
+border: 1px solid #DBDBDB;
+${ props => props.dropdownHeight && `
+    height: ${props.dropdownHeight}px;
+    overflow-y: scroll;
+`};
 `;
 
-const DropdownItem = styled.div`
+const DropdownItem = styled.div<{ isSelectedItem: boolean }>`
 padding: 15px;
+background-color: ${({ isSelectedItem }) => isSelectedItem ? '#d9ffff' : '#ffffff'};
 cursor: pointer;
 `;
-
-
 
 export type DropdownOption = {
     text: string;
@@ -51,33 +52,44 @@ export type DropdownOption = {
 
 interface IDropdown {
     options: Array<DropdownOption>;
-    value: string;
+    value?: string;
     onSelect: (value: string) => void;
     placeholder?: string;
     width?: number;
     disable?: boolean;
+    dropdownHeight?: number;
 }
 
 const Dropdown: React.FC<IDropdown> = (props: IDropdown) => {
     const [ isActive, setIsActive ] = useState(false);
 
+    const buttonText = props.options.find((option) => option.value === props.value)?.text;
+
     return (
         <DropdownView
+            width={props.width}
         >
-            <DropdownButtonView onClick={() => {
-                setIsActive((prev) => !prev);
-                console.log('눌렸음');
-            }}>
-                <DropdownButtonText>주식회사</DropdownButtonText>
+            <DropdownButtonView onClick={() => setIsActive((prev) => !prev)}>
+                <DropdownButtonText>
+                    { buttonText ? buttonText
+                        : props.placeholder ?? '직접 선택'
+                    }
+                </DropdownButtonText>
                 <RightArrow src={ArrowImage} isRotate={isActive}/>
             </DropdownButtonView>
             { isActive && (
-                <DropdownContent>
+                <DropdownContent
+                    dropdownHeight={props.dropdownHeight}
+                >
                     { props.options.map((option, index) => {
                         return (
                             <DropdownItem
                                 key={`${option.value}-${option.text}`}
-                                onClick={() => props.onSelect(option.value)}
+                                onClick={() => {
+                                    props.onSelect(option.value);
+                                    setIsActive((prev) => !prev);
+                                }}
+                                isSelectedItem={option.value === props.value}
                             >{option.text}</DropdownItem>
                         );
                     })}
