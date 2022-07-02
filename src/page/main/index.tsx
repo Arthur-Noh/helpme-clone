@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { observer } from 'mobx-react';
 import styled from "styled-components";
 import Dropdown from "../../components/dropdown";
+import Button from "components/button";
+import { Link } from "react-router-dom";
 
 const RightHeaderStyle = styled.div`
 position: fixed;
@@ -30,15 +32,24 @@ const Main = observer(() => {
         { text: '김종관', value: '김종관' },
     ];
 
+    const [ dropdownValue, setDropdownValue ] = useState<string>();
+
     return (
         <>
-            {/* <RightHeaderStyle/> */}
             <Dropdown
                 options={dummy}
-                value={'asd'}
-                onSelect={(value) => console.log('value =>', value)}
+                value={dropdownValue}
+                onSelect={(value) => setDropdownValue(value)}
+                width={200}
+                dropdownHeight={150}
             />
+            <Button
+                onPress={() => console.log('눌렸음')}
+            >
+                안녕하세요
+            </Button>
 
+            <Link to='/estimateStep1'>extimate Page</Link>
         </>
     )
 });
