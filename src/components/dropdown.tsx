@@ -23,7 +23,7 @@ color: '#333';
 const RightArrow = styled.img<{ isRotate?: boolean }>`
 width: 20px;
 height: 20px;
-transform: ${({ isRotate }) => isRotate ? 'rotate(180deg)' : 'rotate(0deg)'};
+transform: ${({ isRotate }) => isRotate ? 'rotate(0deg)' : 'rotate(180deg)'};
 `;
 
 const DropdownContent = styled.div<{ dropdownHeight?: number }>`
