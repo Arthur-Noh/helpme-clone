@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import Flex from 'components/flex';
 import { observer } from 'mobx-react';
 import LogoImage from '../../../assert/main.png';
 import Button from 'components/button';
 import estimateStore from '../store';
-import XImage from '../../../assert/x.png';
 import ListCard from 'components/listCard';
+import EstablishCorp from '../formPage/establishCorp';
 
 const Body = styled.div`
 display: flex;
@@ -72,8 +72,6 @@ margin-top: 20px;
 padding: 10px 0 10px 10px;
 `;
 
-// const BottomListCardText = 
-
 const LeftTabBottomButtonView = styled.div`
 padding: 5px 10px;
 `
@@ -84,6 +82,7 @@ border-radius: 60px;
 background-color: #EFEFEF;
 :hover{
     background-color: #ffffff;
+    cursor: pointer;
 }
 `;
 
@@ -96,7 +95,6 @@ const EstimateStep1 = observer(() => {
     return (
         <Body>
             <LeftTab>
-
                 <LeftTabTitleView>
                     <LeftTabTitle>
                         <LeftTabLogo src={LogoImage}/>
@@ -157,7 +155,9 @@ const EstimateStep1 = observer(() => {
                 </LeftTabBottomList>
 
                 <LeftTabBottomButtonView>
-                    <LeftTabBottomButton>
+                    <LeftTabBottomButton
+                        onClick={() => alert('서비스 준비중입니다!')}
+                    >
                         <LeftTabBottomButtonText>
                             {`로그인 정보 수정하기`}
                         </LeftTabBottomButtonText>
@@ -165,7 +165,7 @@ const EstimateStep1 = observer(() => {
                 </LeftTabBottomButtonView>
             </LeftTab>
 
-            <Flex>Estimate Step1 Page</Flex>
+            <EstablishCorp/>
         </Body>
     );
 });
