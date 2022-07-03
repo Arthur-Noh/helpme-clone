@@ -50,6 +50,7 @@ class EstimateStore implements IStore {
 
     clear() {
         this.estimateForm = initialState.estimateForm;
+        this.formNumber = initialState.formNumber;
     };
 };
 

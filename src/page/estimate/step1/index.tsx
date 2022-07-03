@@ -18,7 +18,7 @@ const LeftTab = styled.div`
 display: flex;
 flex-direction: column;
 width: 300px;
-height: 100vh;
+height: 100%;
 background-color: #EFEFEF;
 `;
 
